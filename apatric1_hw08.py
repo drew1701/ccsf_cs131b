@@ -7,6 +7,7 @@ Homework 08: Task:
  indicate how many times the sum of the results was a multiple of three.
 """
 import random
+
 # set variable to count dice roll sums that are divisible by 3
 divby3 = 0
 

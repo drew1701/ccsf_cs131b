@@ -2,17 +2,16 @@
 """
 Andrew Patrick - apatric1
 Prog Fundamentals: Python
-Homework 10: Task:
- Write a program that estimates the number of unique words in the text
- /users/abrick/resources/urantia.txt.
-Extra: Command line switch that shows all filters used to find uniques
+Homework 11: Task:
+ Write a program that shows ten unique random words,
+ all over ten characters long, that occur in the text
+ /users/abrick/resources/urantia.txt
 """
 # Use random for randint, use regex to filter number items.
 import random
 import re
 
 # Exit gracefully if file can not be opened.
-fhand = None
 try:
     fhand = open('urantia.txt')
 except Exception:
@@ -59,6 +58,9 @@ for pick in range(SELECT):
     chosen_lst.append(filter_lst[number])
 
 # Show required results.
-print(f"There are {(len(filter_set)):,} unique words with over 10 letters.")
+print(f"\nThe file 'urantia.txt' has roughly {(len(filter_set)):,}")
+print("unique words with more than ten characters.")
+print("Here are", SELECT, "of them, chosen at random:")
 for this in range(SELECT):
     print(chosen_lst[this])
+print()

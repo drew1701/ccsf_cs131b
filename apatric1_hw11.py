@@ -59,7 +59,7 @@ def pick_rnd_list(howmany):
 
 
 # Convert the return of the function into a list for indexing
-filter_lst = [find_unique_words(fhand)]
+filter_lst = list(find_unique_words(fhand))
 
 # SELECT is number of picks, range is length of filter list
 rand_words = pick_rnd_list(SELECT)

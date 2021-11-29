@@ -2,10 +2,11 @@
 """
 Andrew Patrick - apatric1
 Prog Fundamentals: Python
-Homework 11: Task:
+Homework 11a: Task:
  Write a program that shows ten unique random words,
  all over ten characters long, that occur in the text
  /users/abrick/resources/urantia.txt
+NOTE: This version (11a) has logic updated but without functions
 """
 # Use random for randint, use regex to filter number items.
 import random

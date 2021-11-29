@@ -2,11 +2,9 @@
 """
 Andrew Patrick - apatric1
 Prog Fundamentals: Python
-Homework 12a: Task:
+Homework 12: Task:
  Write a program that indicates the single greatest integer in
  /users/abrick/resources/urantia.txt
-NOTE: rough code
-Actual largest integer: 842,842,682,846,782
 """
 # Use regex to filter number items.
 import re
@@ -18,39 +16,41 @@ largest_int = int(1)
 fhand = None
 try:
     fhand = open('urantia.txt')
-except Exception:
-    print('file cannot be opened')
+except IOError:
+    print('File can not be opened.')
     exit()
 
-# Process text file per line, filter then compare str values
+# Process text file per line: filter, trim, cast, compare.
 for line in fhand:
     words = line.split()
     for item in words:
+
         # Skip if no numerics at all.
         if not re.search(r'\d', item):
             continue
-        # Skip numerics with [:./-] at start or middle.
-        if re.search(r'\d*[:./-]\d+', item):
+        # Skip numerics with not digits in middle, leave commas
+        if re.search(r'\d+[^\d,]+\d+', item):
             continue
+
         # Remove leading not digits.
         while re.search(r'^\D', item):
             item = item[1:]
         # Remove trailing not digits.
         while re.search(r'\D$', item):
             item = item[:-1]
-        # Remove commas from formatted large numbers
+        # Remove commas from formatted large numbers.
         item = re.sub(",", "", item)
 
-        # Compare current item to largest, keep largest
-        if item > largest_int:
-            largest_int = item
+        # Carefully cast str to int, if error skip item.
+        try:
+            item_int = int(item)
+        except ValueError:
+            continue
 
-print("big one " + largest_num)
-
-# Convert the return of the function into a list for indexing
-# filter_lst = list(find_unique_words(fhand))
+        # Compare current item to largest_int, keep greater value.
+        if item_int > largest_int:
+            largest_int = item_int
 
 # Show required results.
-# print(f"\nThe file 'urantia.txt' has roughly {(len(filter_lst)):,}")
-# print("unique words with more than ten characters.")
-
+print(f"\nThe largest integer found in the file 'urantia.txt' is:")
+print(f"{largest_int :,}\n")

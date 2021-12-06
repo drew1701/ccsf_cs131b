@@ -1,12 +1,23 @@
 #!/usr/bin/env python3
-'''
+"""
 short answer to the reverse CLA assignment
 from abrick
 import sys
 print(' '.join(sys.argv[:0:-1]))
-'''
+"""
 
-a = "11111111111"
-b = "9999"
+# sample code from reading, Fish class
+class Fish:
+    def __init__(self, first_name, last_name="Fish",
+                 skeleton="bone", eyelids=False):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.skeleton = skeleton
+        self.eyelids = eyelids
 
-print(a > b)
+    def swim(self):
+        print("The fish is swimming.")
+
+    def swim_backwards(self):
+        print("The fish can swim backwards.")
+

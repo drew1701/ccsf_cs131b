@@ -30,7 +30,7 @@ def find_unique_words(filehandler):
         words = line.split()
         for item in words:
             # Skip numbers and double hyphens.
-            if re.search("[0-9]", item):
+            if re.search("[0-9]|[--]", item):
                 continue
             if '--' in item:
                 continue

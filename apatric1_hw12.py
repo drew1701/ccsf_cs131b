@@ -5,9 +5,13 @@ Prog Fundamentals: Python
 Homework 12: Task:
  Write a program that indicates the single greatest integer in
  /users/abrick/resources/urantia.txt
+postFix: added PATH
 """
 # Use regex to filter number items.
 import re
+
+# Update path at deployment.
+PATH = 'urantia.txt'
 
 # Set largest_int variable to 1 for comparison
 largest_int = int(1)
@@ -15,7 +19,7 @@ largest_int = int(1)
 # Exit gracefully if file can not be opened.
 fhand = None
 try:
-    fhand = open('urantia.txt')
+    fhand = open(PATH)
 except IOError:
     print('File can not be opened.')
     exit()

@@ -6,10 +6,15 @@ Homework 11: Task:
  Write a program that shows ten unique random words,
  all over ten characters long, that occur in the text
  /users/abrick/resources/urantia.txt
+postFix: added PATH, fixed randint parameter so len -1
+postFix: removed if block that looked for "--"
 """
 # Use random for randint, use regex to filter number items.
 import random
 import re
+
+# Update path at deployment.
+PATH = 'urantia.txt'
 
 # Declare constant for number of random selections
 SELECT = 10
@@ -17,7 +22,7 @@ SELECT = 10
 # Exit gracefully if file can not be opened.
 fhand = None
 try:
-    fhand = open('urantia.txt')
+    fhand = open(PATH)
 except Exception:
     print('file cannot be opened')
     exit()
@@ -29,10 +34,8 @@ def find_unique_words(filehandler):
     for line in filehandler:
         words = line.split()
         for item in words:
-            # Skip numbers and double hyphens.
-            if re.search("[0-9]|[--]", item):
-                continue
-            if '--' in item:
+            # Skip numbers.
+            if re.search("[0-9]", item):
                 continue
             # Remove start punctuation, while handles multiples.
             while item.startswith(('(', '"', '-', '`')):
@@ -53,7 +56,7 @@ def pick_rnd_list(howmany):
     chosen_lst = list()
     # Choose random words by index number, add to chosen_lst
     for pick in range(howmany):
-        number = random.randint(1, len(filter_lst))
+        number = random.randint(1, len(filter_lst)-1)
         chosen_lst.append(filter_lst[number])
     return chosen_lst
 

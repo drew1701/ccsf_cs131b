@@ -5,12 +5,17 @@ Prog Fundamentals: Python
 Homework 13: Task:
  Write a program that defines and demonstrates a class of book objects
  having >= 3 functions useful for handling the text content of books
+postFix: added PATH, fixed randinit parameter to len()-1
+postFix: removed if block for "--"
 """
 import random
 
+# Update path at deployment.
+PATH = 'urantia.txt'
+
 
 class Book:
-    def __init__(self, filename="urantia.txt"):
+    def __init__(self, filename=PATH):
         self.filename = filename
         self.sample_lines_lst = list()
         self.chosen_lst = list()
@@ -73,10 +78,8 @@ class Book:
         filter_set = set()
         words = self.orig_text.split()
         for item in words:
-            # Skip numbers and double hyphens.
-            if re.search("[0-9]|[--]", item):
-                continue
-            if '--' in item:
+            # Skip numbers.
+            if re.search("[0-9]", item):
                 continue
             # Remove start punctuation, while handles multiples.
             while item.startswith(('(', '"', '-', '`')):
@@ -92,13 +95,14 @@ class Book:
 
         filter_lst = list(filter_set)
         for pick in range(howmany):
-            number = random.randint(1, len(filter_lst))
+            number = random.randint(1, len(filter_lst)-1)
             self.chosen_lst.append(filter_lst[number])
 
         print('\nHere are', howmany, 'unique words from the file:')
         print(self.filename, '\n')
         for word in self.chosen_lst:
             print(word)
+
 
 # Create instance of Book class named urantia
 urantia = Book()

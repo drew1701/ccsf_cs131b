@@ -6,6 +6,7 @@ Homework 10: Task:
  Write a program that estimates the number of unique words in the text
  /users/abrick/resources/urantia.txt.
 Extra: Command line switch that shows all filters used to find uniques
+postFix: added PATH
 """
 # Use regex to filter number items.
 import re
@@ -13,10 +14,13 @@ import re
 # Use argv to watch for command line switches
 import sys
 
+# Update path at deployment.
+PATH = 'urantia.txt'
+
 # Exit gracefully if file can not be opened.
 fhand = None
 try:
-    fhand = open('urantia.txt')
+    fhand = open(PATH)
 except Exception:
     print('file cannot be opened')
     exit()

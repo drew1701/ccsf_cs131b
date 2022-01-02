@@ -108,6 +108,6 @@ class Book:
 urantia = Book()
 
 # Demonstrate the functions
-urantia.show_sample(13)
+urantia.show_sample(-4)
 urantia.find_largest_int()
 urantia.pick_unique_words(7)

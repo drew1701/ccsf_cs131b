@@ -20,4 +20,3 @@ class Fish:
 
     def swim_backwards(self):
         print("The fish can swim backwards.")
-
